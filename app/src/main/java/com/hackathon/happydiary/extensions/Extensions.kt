@@ -23,7 +23,6 @@ import retrofit2.Retrofit
 import java.text.SimpleDateFormat
 import java.util.*
 
-
 inline fun Builder.applySSL(): Builder = SSLHelper.configureClient(this)
 
 fun <T> Single<T>.with(): Single<T> = subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())

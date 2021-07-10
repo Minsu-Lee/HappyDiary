@@ -41,9 +41,10 @@ class SplashUI: AnkoComponent<Activity> {
 
             textView("당신만이\n누리고 있는 행복을\n붙잡아 기록해보세요.") {
 
-                typeface = ResourcesCompat.getFont(context, R.font.nanum_myeongjo_bold)
+                typeface = ResourcesCompat.getFont(context, R.font.nanum_myeongjo_extra_bold)
                 setTextSize(TypedValue.COMPLEX_UNIT_PX, resources.getDimension(R.dimen.splash_content_text_size))
                 textColor = Color.parseColor("#1A1A1A")
+                setLineSpacing(resources.getDimension(R.dimen.splash_content_text_line_height), 1.0f)
                 gravity = Gravity.CENTER_VERTICAL
 
             }.lparams(width= wrapContent, height= wrapContent) {
@@ -60,7 +61,7 @@ class SplashUI: AnkoComponent<Activity> {
 
                     typeface = ResourcesCompat.getFont(context, R.font.notosans_cjk_bold)
                     setTextSize(TypedValue.COMPLEX_UNIT_PX, resources.getDimension(R.dimen.splash_start_text_size))
-                    textColor = Color.parseColor("#C174FD")
+                    textColor = Color.parseColor("#6B53FF")
                     gravity = Gravity.CENTER
 
                 }.lparams(width= wrapContent, height= wrapContent)
