@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import com.hackathon.happydiary.BuildConfig
 import com.hackathon.happydiary.R
 import com.hackathon.happydiary.StatusConst
 import com.hackathon.happydiary.base.BaseActivity
@@ -30,7 +31,7 @@ class SplashActivity: BaseActivity<SplashConstract.View, SplashPresenter>(), Spl
     }
 
     private fun getKeyHash() {
-        Utility.getKeyHash(this).let {
+        if (BuildConfig.DEBUG) Utility.getKeyHash(this).let {
             DLog.e("KEY_HASH", it)
         }
     }
