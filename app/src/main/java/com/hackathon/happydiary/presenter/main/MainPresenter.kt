@@ -1,7 +1,7 @@
 package com.hackathon.happydiary.presenter.main
 
 import com.hackathon.happydiary.base.AbstractPresenter
-import com.hackathon.happydiary.view.component.adapter.SampleAdapterConstract
+import com.hackathon.happydiary.adapter.sample.SampleAdapterConstract
 
 class MainPresenter: AbstractPresenter<MainConstract.View>(), MainConstract.Presenter {
 

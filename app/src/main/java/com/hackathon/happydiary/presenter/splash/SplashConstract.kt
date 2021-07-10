@@ -1,5 +1,7 @@
 package com.hackathon.happydiary.presenter.splash
 
+import com.hackathon.happydiary.adapter.sample.SampleAdapterConstract
+import com.hackathon.happydiary.adapter.splash.SplashAdapterConstract
 import com.hackathon.happydiary.base.BasePresenter
 import com.hackathon.happydiary.base.BaseView
 import com.hackathon.happydiary.model.LogInData
@@ -16,6 +18,10 @@ interface SplashConstract {
     }
 
     interface Presenter: BasePresenter<View> {
+        var adapterView: SplashAdapterConstract.View?
+        var adapterModel: SplashAdapterConstract.Model?
+
+        fun getSplashImgs(callback: ((ArrayList<Int>) -> Unit)? = null)
         fun kakaoLogin(callback: (token: OAuthToken?, error: Throwable?) -> Unit)
         fun getKakaoUserInfo(callback: (user: User?, error: Throwable?) -> Unit)
         fun requestLogin(socialId: Long, callback: (Int, Response<LogInData>) -> Unit)

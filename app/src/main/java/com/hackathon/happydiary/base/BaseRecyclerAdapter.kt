@@ -27,7 +27,7 @@ abstract class BaseRecyclerAdapter<ITEM, VH: RecyclerView.ViewHolder>: RecyclerV
      * getItemViewType 재정의가 필요할 시, getViewType 메서드를 재정의
      * fun getViewType(position: Int): Int
      */
-    fun getViewType(position: Int) = position
+    open fun getViewType(position: Int) = position
     override fun getItemViewType(position: Int): Int {
         return when {
             (position == 0 && useHeader()) -> TYPE_HEADER

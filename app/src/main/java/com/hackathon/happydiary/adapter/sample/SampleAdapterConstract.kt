@@ -1,4 +1,4 @@
-package com.hackathon.happydiary.view.component.adapter
+package com.hackathon.happydiary.adapter.sample
 
 import com.hackathon.happydiary.base.BaseAdapterView
 

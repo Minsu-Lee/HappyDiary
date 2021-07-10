@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.hackathon.happydiary.presenter.main.MainPresenter
 import com.hackathon.happydiary.base.BaseActivity
 import com.hackathon.happydiary.presenter.main.MainConstract
-import com.hackathon.happydiary.view.component.adapter.SampleListAdapter
+import com.hackathon.happydiary.adapter.sample.SampleListAdapter
 import com.hackathon.happydiary.view.main.ui.MainUI
 import org.jetbrains.anko.AnkoComponent
 import org.jetbrains.anko.toast

@@ -2,7 +2,7 @@ package com.hackathon.happydiary.presenter.main
 
 import com.hackathon.happydiary.base.BasePresenter
 import com.hackathon.happydiary.base.BaseView
-import com.hackathon.happydiary.view.component.adapter.SampleAdapterConstract
+import com.hackathon.happydiary.adapter.sample.SampleAdapterConstract
 
 interface MainConstract {
 
