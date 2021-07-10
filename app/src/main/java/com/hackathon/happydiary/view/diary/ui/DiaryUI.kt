@@ -2,18 +2,21 @@ package com.hackathon.happydiary.view.diary.ui
 
 import android.app.Activity
 import android.graphics.Color
+import android.graphics.Typeface
 import android.os.Build
+import android.text.Spannable
+import android.text.style.StyleSpan
 import android.util.TypedValue
 import android.view.Gravity
+import android.view.inputmethod.EditorInfo
 import android.widget.LinearLayout
 import androidx.annotation.RequiresApi
 import androidx.core.content.res.ResourcesCompat
-import androidx.core.view.marginLeft
 import com.hackathon.happydiary.R
 import com.hackathon.happydiary.extensions.squareImageView
 import org.jetbrains.anko.*
-import org.jetbrains.anko.design.textInputEditText
-import org.jetbrains.anko.design.themedBottomNavigationView
+import org.jetbrains.anko.appcompat.v7.switchCompat
+
 
 class DiaryUI: AnkoComponent<Activity> {
 
@@ -38,8 +41,8 @@ class DiaryUI: AnkoComponent<Activity> {
                 textView("${num}번째 행복") {
                     typeface = ResourcesCompat.getFont(context, R.font.nanum_myeongjo_bold)
                     setTextSize(
-                        TypedValue.COMPLEX_UNIT_PX,
-                        resources.getDimension(R.dimen.splash_content_text_size)
+                            TypedValue.COMPLEX_UNIT_PX,
+                            resources.getDimension(R.dimen.splash_content_text_size)
                     )
                     textColor = Color.parseColor("#1A1A1A")
                     gravity = Gravity.CENTER
@@ -58,8 +61,8 @@ class DiaryUI: AnkoComponent<Activity> {
                 textView("2021.07.09 (금)") {
                     typeface = ResourcesCompat.getFont(context, R.font.notosans_cjk_bold)
                     setTextSize(
-                        TypedValue.COMPLEX_UNIT_PX,
-                        resources.getDimension(R.dimen.splash_start_text_size)
+                            TypedValue.COMPLEX_UNIT_PX,
+                            resources.getDimension(R.dimen.splash_start_text_size)
                     )
                     textColor = Color.parseColor("#999999")
                 }.lparams(width = wrapContent, height = wrapContent) {
@@ -72,8 +75,8 @@ class DiaryUI: AnkoComponent<Activity> {
                     textView("오늘 하루는 어땠나요?") {
                         typeface = ResourcesCompat.getFont(context, R.font.notosans_cjk_bold)
                         setTextSize(
-                            TypedValue.COMPLEX_UNIT_PX,
-                            resources.getDimension(R.dimen.splash_start_text_size)
+                                TypedValue.COMPLEX_UNIT_PX,
+                                resources.getDimension(R.dimen.splash_start_text_size)
                         )
                         textColor = Color.parseColor("#000000")
                         gravity = Gravity.CENTER_VERTICAL
@@ -113,32 +116,72 @@ class DiaryUI: AnkoComponent<Activity> {
                     hintTextColor = Color.parseColor("#999999")
                     setLineSpacing(resources.getDimension(R.dimen.splash_content_text_size), 1.0f)
                     setTextSize(
-                        TypedValue.COMPLEX_UNIT_PX,
-                        resources.getDimension(R.dimen.diary_text_size)
+                            TypedValue.COMPLEX_UNIT_PX,
+                            resources.getDimension(R.dimen.diary_text_size)
                     )
                     textColor = Color.parseColor("#000000")
                     setTextCursorDrawable(R.drawable.cursor_color)
                 }.lparams(width = dip(280), height = dip(160))
 
+                var edit = editText {
+                    gravity = Gravity.LEFT
+                    hint = "#태그입력"
+                    textColor = Color.parseColor("#000000")
+                    textSizeDimen=R.dimen.splash_start_text_size
+                }.lparams(width = matchParent, height = dip(40)){
+                topMargin = dip(5)
+                }
+                var tag = edit.text.split(" ")
+                var result = ""
 
-                    editText {
-                        gravity = Gravity.LEFT
-                        hint = "#태그입력"
-                    }.lparams(width= matchParent, height=dip(32))
+                for(i in (0 until tag.size)) {
+                    result += tag[i]
+                }
+
+                linearLayout {
+                    gravity = Gravity.LEFT
+                    textView(result) {
+                        typeface = ResourcesCompat.getFont(context, R.font.notosans_cjk_bold)
+                        setTextSize(
+                                TypedValue.COMPLEX_UNIT_PX,
+                                resources.getDimension(R.dimen.diary_space_size)
+                        )
+                        textColor = Color.parseColor("#000000")
+                        gravity = Gravity.CENTER_VERTICAL
+
+                    }.lparams(width = matchParent, height = dip(40)){
+                        rightMargin=dip(5)
+                    }
+                }
+
+              /*str.setOnEditorActionListener { v, actionId, event ->
+                    var handled = false
+                    if (actionId == EditorInfo.IME_ACTION_SEND) {
+                        var boldSpan = StyleSpan(Typeface.BOLD)
+                        var start = str.selectionStart
+                        var end = str.selectionEnd
+                        var flag = Spannable.SPAN_INCLUSIVE_INCLUSIVE
+                        str.text.setSpan(boldSpan, start, end, flag)
+                        handled = true
+                    }
+                    handled
+                }
+*/
+
 
                     linearLayout{
-                        switch(
-                            
+                        switchCompat(
+
                         ).setOnClickListener{
                             toast("Toast Message")
                         }
-                    }.lparams(width=dip(60), height=dip(32))
+                    }.lparams(width = dip(60), height = dip(32))
 
                     view { backgroundColor = android.R.color.transparent }.lparams(
                         width = dip(1),
                         height = wrapContent,
                         weight = 1f
-                    )
+                )
                     linearLayout {
                         backgroundResource = R.drawable.bg_upload_btn
                         gravity = Gravity.CENTER
@@ -147,8 +190,8 @@ class DiaryUI: AnkoComponent<Activity> {
 
                             typeface = ResourcesCompat.getFont(context, R.font.notosans_cjk_bold)
                             setTextSize(
-                                TypedValue.COMPLEX_UNIT_PX,
-                                resources.getDimension(R.dimen.splash_start_text_size)
+                                    TypedValue.COMPLEX_UNIT_PX,
+                                    resources.getDimension(R.dimen.splash_start_text_size)
                             )
                             textColor = Color.parseColor("#FFFFFF")
                             gravity = Gravity.CENTER
@@ -157,7 +200,7 @@ class DiaryUI: AnkoComponent<Activity> {
                         bottomMargin = dip(20)
                         horizontalMargin = dip(20)
                     }
-            }.lparams(width= matchParent, height= wrapContent){
+            }.lparams(width = matchParent, height = wrapContent){
                 horizontalMargin = dip(40)
                 bottomMargin = dip(40)
             }

@@ -13,14 +13,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HappyDiary">
 
-        <activity android:name=".view.splash.SplashActivity">
+        <activity android:name=".view.diary.DiaryActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.diary.DiaryActivity"></activity>
+        <!--activity android:name=".view.diary.DiaryActivity"></activity-->
 
         <!--<activity android:name=".view.splash.SplashActivity" />-->
 
