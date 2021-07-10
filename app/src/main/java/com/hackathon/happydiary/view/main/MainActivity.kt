@@ -12,13 +12,14 @@ import com.hackathon.happydiary.view.component.adapter.SampleListAdapter
 import com.hackathon.happydiary.view.main.ui.MainUI
 import org.jetbrains.anko.AnkoComponent
 import org.jetbrains.anko.toast
+import org.koin.android.ext.android.get
 
 class MainActivity : BaseActivity<MainConstract.View, MainPresenter>(), MainConstract.View {
 
     lateinit var mAdapter: SampleListAdapter
 
     override var layout: AnkoComponent<Activity> = MainUI()
-    override fun onCreatePresenter(): MainPresenter = MainPresenter()
+    override fun onCreatePresenter(): MainPresenter = get()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

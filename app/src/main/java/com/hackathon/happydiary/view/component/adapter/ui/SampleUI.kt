@@ -22,7 +22,7 @@ class SampleUI: AnkoComponent<ViewGroup> {
 
                     setTextSize(TypedValue.COMPLEX_UNIT_PX, resources.getDimension(R.dimen.sample_text_size))
                     textColor = Color.parseColor("#00AAFF")
-                    typeface = ResourcesCompat.getFont(context, R.font.barlow_medium)
+                    typeface = ResourcesCompat.getFont(context, R.font.notosans_cjk_black)
                     gravity = Gravity.CENTER
 
                 }.lparams(width= wrapContent, height= wrapContent)
