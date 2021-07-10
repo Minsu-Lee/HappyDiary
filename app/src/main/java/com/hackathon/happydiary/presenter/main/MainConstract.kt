@@ -1,4 +1,4 @@
-package com.hackathon.happydiary.presenter
+package com.hackathon.happydiary.presenter.main
 
 import com.hackathon.happydiary.base.BasePresenter
 import com.hackathon.happydiary.base.BaseView

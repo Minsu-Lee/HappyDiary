@@ -1,5 +1,7 @@
 package com.hackathon.happydiary.base
 
+import java.util.concurrent.TimeUnit
+
 interface BaseView {
 
     fun onBinding(data: Any? = null) { }
@@ -7,5 +9,7 @@ interface BaseView {
     fun onVisibleProgress() { }
 
     fun onInvisibleProgress() { }
+
+    fun movePage(callback: (Long)->Unit, delay: Long = 2000L, timeUnit: TimeUnit = TimeUnit.MILLISECONDS)
 
 }

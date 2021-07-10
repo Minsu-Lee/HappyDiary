@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <item name="sample_text" type="id" />
+    <item name="splash_parent" type="id" />
+    <item name="splash_indicator" type="id" />
+    <item name="splash_kakao_btn" type="id" />
 </resources>

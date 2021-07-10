@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HappyDiary">
 
-        <activity android:name=".view.splash.SplashActivity">
+        <activity android:name=".view.splash.SplashActivity"
+            android:theme="@style/Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,7 +22,19 @@
             </intent-filter>
         </activity>
 
-        <!--<activity android:name=".view.splash.SplashActivity" />-->
+        <activity android:name=".view.main.MainActivity" />
+
+        <activity android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <!-- Redirect URI: "kakao{NATIVE_APP_KEY}://oauth" -->
+                <data android:host="oauth"
+                    android:scheme="kakao4e0b8b597c546e73c3dde0bb45ab2a10" />
+            </intent-filter>
+        </activity>
 
     </application>
 

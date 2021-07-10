@@ -77,6 +77,8 @@ dependencies {
     implementation lib.glide.runtime
     implementation lib.glide.annotation
 
+    implementation lib.kakao.runtime
+
     // multidex
     implementation lib.multidex.runtime
 
