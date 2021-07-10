@@ -1,9 +1,9 @@
 package com.hackathon.happydiary.di
 
-import com.hackathon.happydiary.network.KakaoAPIService
+import com.hackathon.happydiary.network.UserAPIService
 import org.koin.dsl.module
 import retrofit2.Retrofit
 
 val apiModule = module {
-    single { get<Retrofit>().create(KakaoAPIService::class.java) }
+    single { get<Retrofit>().create(UserAPIService::class.java) }
 }
