@@ -15,6 +15,12 @@ inline fun ViewManager.squareImageView() = squareImageView {}
 inline fun ViewManager.squareImageView(init: SquareImageView.() -> Unit): SquareImageView {
     return ankoView({ SquareImageView(it) }, theme= 0, init= init)
 }
+inline fun ViewManager.squareImageView(imageResource: Int, init: SquareImageView.() -> Unit): SquareImageView {
+    return ankoView({ SquareImageView(it) }, theme= 0) {
+        init()
+        setImageResource(imageResource)
+    }
+}
 
 inline fun ViewManager.swipeRefreshLayout() = swipeRefreshLayout {}
 inline fun ViewManager.swipeRefreshLayout(init: SwipeRefreshLayout.() -> Unit): SwipeRefreshLayout {
