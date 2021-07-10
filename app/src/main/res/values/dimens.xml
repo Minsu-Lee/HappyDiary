@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="sample_text_size">13dp</dimen>
-    <dimen name="splash_content_text_size">24dp</dimen>
+    <dimen name="diary_text_size">12dp</dimen>
+    <dimen name="diary_space_size">20dp</dimen>
+    <dimen name="splash_content_text_size">20dp</dimen>
     <dimen name="splash_start_text_size">14dp</dimen>
 </resources>

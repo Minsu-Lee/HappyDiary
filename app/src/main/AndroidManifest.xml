@@ -20,6 +20,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".view.diary.DiaryActivity"></activity>
 
         <!--<activity android:name=".view.splash.SplashActivity" />-->
 
