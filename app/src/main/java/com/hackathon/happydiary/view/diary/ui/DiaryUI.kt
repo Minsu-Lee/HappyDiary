@@ -104,6 +104,7 @@ class DiaryUI: AnkoComponent<Activity> {
                     }
                 }
 
+                //일기장
                 editText {
                     gravity = Gravity.LEFT
                     backgroundResource = R.drawable.diary_space
