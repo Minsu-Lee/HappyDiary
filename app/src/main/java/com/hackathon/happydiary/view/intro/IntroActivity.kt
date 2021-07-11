@@ -24,21 +24,21 @@ class IntroActivity: BaseActivity<IntroConstract.View, IntroPresenter>(), IntroC
     }
 
     private fun validToken() {
-        pref.getAuthorization().let { token ->
+        /**
+         * 토큰 검사
+         */
+        presenter?.validToken { status, response ->
 
-            /**
-             * 토큰 검사
-             */
-            presenter?.validToken(token) { status, response ->
-
-                when (status) {
-                    // 신규 사용자
-                    StatusConst.NEW_USER -> movePage(this::moveSplashPage)
-                    // 토큰 정상 or 토큰 갱신, 메인으로 이동
-                    StatusConst.SUCCESS or StatusConst.SUCCESS201 -> movePage(this::moveMainPage)
+            when (status) {
+                // 신규 사용자
+                StatusConst.NEW_USER -> movePage(this::moveSplashPage)
+                // 토큰 정상 or 토큰 갱신, 메인으로 이동
+                StatusConst.SUCCESS, StatusConst.SUCCESS201 -> {
+                    response.data?.let { pref.setAuthorization(it.accessToken) }
+                    movePage(this::moveMainPage)
                 }
-            } ?: movePage(this::moveSplashPage)
-        }
+            }
+        } ?: movePage(this::moveSplashPage)
     }
 
     override fun moveSplashPage(time: Long) {

@@ -76,7 +76,7 @@ class SplashPresenter(val userApi: UserAPIService): AbstractPresenter<SplashCons
             .subscribeOn(Schedulers.io())
             .subscribe({
                 when (it.status) {
-                    StatusConst.SUCCESS or StatusConst.SUCCESS201 -> callback(it.status, it)
+                    StatusConst.SUCCESS, StatusConst.SUCCESS201 -> callback(it.status, it)
                     else -> log("validToken", it.message)
                 }
             }, this::handleError)

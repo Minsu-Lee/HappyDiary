@@ -103,6 +103,7 @@ class SplashActivity: BaseActivity<SplashConstract.View, SplashPresenter>(), Spl
                          * 아직 가입 유무 API를 개발 진행중이라 향후 로직 개발
                          */
                         val identifier = id
+                        pref.setOAuthId(identifier)
                         DLog.e("kakaoLogin", "$identifier")
 
                         requestLogin(identifier) { status, response ->
@@ -120,6 +121,10 @@ class SplashActivity: BaseActivity<SplashConstract.View, SplashPresenter>(), Spl
                                 }
                             }
                         }
+//                        movePage({
+//                            Intent(this@SplashActivity, MainActivity::class.java)
+//                                .let(this@SplashActivity::startActivity)
+//                        }, 2000L)
                     }
                 }
             }

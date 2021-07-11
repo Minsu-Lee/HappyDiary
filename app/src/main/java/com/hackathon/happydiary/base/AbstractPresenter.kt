@@ -28,7 +28,7 @@ abstract class AbstractPresenter<VIEW : BaseView>() : BasePresenter<VIEW> {
 
     override fun handleError(error: Throwable) {
         view?.onInvisibleProgress()
-        DLog.e("handleError", "error : ${error.printStackTrace()}")
+        DLog.e("handleError", "error : ${error.message}")
     }
 
     fun addDisposable(disposable: Disposable?) {

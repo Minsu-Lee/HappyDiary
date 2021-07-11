@@ -3,6 +3,7 @@ package com.hackathon.happydiary
 object AppConst {
 
     const val AUTHORIZATION_KEY: String = "Authorization"
+    const val OAUTHID_KEY: String = "OAuthId"
     const val USER_ID_KEY: String = "userId"
     const val LOGIN_ID: String = "loginId"
     const val USER_NAME_KEY: String = "userName"
