@@ -8,6 +8,9 @@
     <dimen name="login_text_size">14dp</dimen>
     <dimen name="login_text_line_height">6dp</dimen>
 
+    <dimen name="diary_text_size">12dp</dimen>
+    <dimen name="diary_space_size">20dp</dimen>
+
     <dimen name="main_tab_text_size">10dp</dimen>
     <dimen name="main_tab_text_line_height">5dp</dimen>
     <dimen name="my_tab_happy_text_size">14dp</dimen>
