@@ -63,7 +63,7 @@ class DiaryUI: AnkoComponent<Activity> {
                     typeface = ResourcesCompat.getFont(context, R.font.notosans_cjk_medium)
                     setTextSize(
                             TypedValue.COMPLEX_UNIT_PX,
-                            resources.getDimension(R.dimen.splash_start_text_size)
+                            resources.getDimension(R.dimen.splash_content_text_size)
                     )
                     textColor = Color.parseColor("#999999")
                 }.lparams(width = wrapContent, height = wrapContent) {
@@ -77,7 +77,7 @@ class DiaryUI: AnkoComponent<Activity> {
                         typeface = ResourcesCompat.getFont(context, R.font.notosans_cjk_bold)
                         setTextSize(
                                 TypedValue.COMPLEX_UNIT_PX,
-                                resources.getDimension(R.dimen.splash_start_text_size)
+                                resources.getDimension(R.dimen.splash_content_text_size)
                         )
                         textColor = Color.parseColor("#000000")
                         gravity = Gravity.CENTER_VERTICAL
@@ -159,7 +159,7 @@ class DiaryUI: AnkoComponent<Activity> {
                     singleLine = true
                     textColor = Color.parseColor("#000000")
                     setTextCursorDrawable(R.drawable.cursor_color)
-                    textSizeDimen =R.dimen.splash_start_text_size
+                    textSizeDimen =R.dimen.splash_content_text_size
                 }.lparams(width = matchParent, height = dip(40)){
                     topMargin = dip(5)
                     horizontalMargin = dip(20)
@@ -224,7 +224,7 @@ class DiaryUI: AnkoComponent<Activity> {
                             typeface = ResourcesCompat.getFont(context, R.font.notosans_cjk_bold)
                             setTextSize(
                                     TypedValue.COMPLEX_UNIT_PX,
-                                    resources.getDimension(R.dimen.splash_start_text_size)
+                                    resources.getDimension(R.dimen.splash_content_text_size)
                             )
                             textColor = Color.parseColor("#FFFFFF")
                             gravity = Gravity.CENTER
