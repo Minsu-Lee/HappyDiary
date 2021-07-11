@@ -1,5 +1,7 @@
 package com.hackathon.happydiary.base
 
+import android.content.Context
+import android.widget.Toast
 import com.hackathon.happydiary.utils.DLog
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
@@ -12,6 +14,7 @@ abstract class AbstractPresenter<VIEW : BaseView>() : BasePresenter<VIEW> {
 
     override var mCompositeDisposable: CompositeDisposable = CompositeDisposable()
 
+    lateinit var ctx: Context
     protected var view: VIEW? = null
 
     override fun attachView(view: VIEW) {
@@ -25,7 +28,7 @@ abstract class AbstractPresenter<VIEW : BaseView>() : BasePresenter<VIEW> {
 
     override fun handleError(error: Throwable) {
         view?.onInvisibleProgress()
-        DLog.e("handleError", "error : ${error.printStackTrace()}")
+        DLog.e("handleError", "error : ${error.message}")
     }
 
     fun addDisposable(disposable: Disposable?) {
@@ -37,5 +40,16 @@ abstract class AbstractPresenter<VIEW : BaseView>() : BasePresenter<VIEW> {
     }
 
     fun clearDisposable() = mCompositeDisposable.let { if (it.size() > 0) it.clear() }
+
+    fun moveLoginPage() {
+
+    }
+
+    fun toast(msg: String): Toast = Toast.makeText(ctx, msg, Toast.LENGTH_LONG).also { it.show() }
+    fun log(tag: String, msg: String) {
+        DLog.e(tag, msg)
+        toast(msg)
+    }
+    fun log(Class: Class<*>, msg: String) = log(Class.simpleName, msg)
 
 }

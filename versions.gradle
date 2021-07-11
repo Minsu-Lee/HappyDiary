@@ -9,6 +9,7 @@ ext {
     recyclerviewVersion = '1.1.0'
     glideVersion = '4.12.0'
     multidexVersion = '2.0.1'
+    kakaoVersion = '2.5.2'
 }
 ext.lib = [:]
 
@@ -87,6 +88,10 @@ def glide = [:]
 glide.runtime = "com.github.bumptech.glide:glide:$glideVersion"
 glide.annotation = "com.github.bumptech.glide:compiler:$glideVersion"
 lib.glide = glide
+
+def kakao = [:]
+kakao.runtime = "com.kakao.sdk:v2-user:$kakaoVersion"
+lib.kakao = kakao
 
 /* MultiDex */
 def multidex = [:]
