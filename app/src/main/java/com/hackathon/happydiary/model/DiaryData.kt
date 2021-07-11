@@ -15,7 +15,7 @@ data class DiaryData(
     val content: String,
 
     @SerializedName("hashTag")
-    val hashTag: Any,
+    val hashTag: String,
 
     @SerializedName("id")
     val id: Int,
@@ -27,13 +27,13 @@ data class DiaryData(
     val likeCount: Int,
 
     @SerializedName("nickname")
-    val nickname: Any,
+    val nickname: String,
 
     @SerializedName("open")
     val open: Boolean,
 
     @SerializedName("profileUrl")
-    val profileUrl: Any,
+    val profileUrl: String,
 
     @SerializedName("weather")
     val weather: String): Parcelable

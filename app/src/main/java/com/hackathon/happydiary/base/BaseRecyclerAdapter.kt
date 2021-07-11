@@ -44,7 +44,7 @@ abstract class BaseRecyclerAdapter<ITEM, VH: RecyclerView.ViewHolder>: RecyclerV
         TYPE_HEADER -> onCreateHeaderViewHolder(parent, viewType)!!
         TYPE_FOOTER -> onCreateFooterViewHolder(parent, viewType)!!
         else -> onCreateBasicViewHolder(parent, viewType)
-    }
+    } as VH
 
     /**
      * Bind ViewHolder
@@ -86,15 +86,15 @@ abstract class BaseRecyclerAdapter<ITEM, VH: RecyclerView.ViewHolder>: RecyclerV
      * Header ( optional )
      */
     open fun useHeader() = false
-    open fun onCreateHeaderViewHolder(parent: ViewGroup, viewType: Int): VH? = null
-    open fun onBindHeaderItemView(holder: VH, position: Int) {}
+    open fun onCreateHeaderViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder? = null
+    open fun onBindHeaderItemView(holder: RecyclerView.ViewHolder, position: Int) {}
 
     /**
      * Footer ( optional )
      */
     open fun useFooter() = false
-    open fun onCreateFooterViewHolder(parent: ViewGroup, viewType: Int): VH? = null
-    open fun onBindFooterItemView(holder: VH, position: Int) {}
+    open fun onCreateFooterViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder? = null
+    open fun onBindFooterItemView(holder: RecyclerView.ViewHolder, position: Int) {}
 
     /**
      * ViewHolder Parent ClickListener ( optional )

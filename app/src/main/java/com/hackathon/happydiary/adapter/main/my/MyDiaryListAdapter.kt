@@ -2,29 +2,46 @@ package com.hackathon.happydiary.adapter.main.my
 
 import android.content.Context
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
+import com.hackathon.happydiary.adapter.main.my.holder.DiaryItemViewHolder
 import com.hackathon.happydiary.adapter.main.my.holder.MainItemViewHolder
+import com.hackathon.happydiary.adapter.main.my.ui.DiaryItemUI
 import com.hackathon.happydiary.adapter.main.my.ui.MainItemUI
 import com.hackathon.happydiary.base.BaseRecyclerAdapter
+import com.hackathon.happydiary.model.DiaryData
+import com.hackathon.happydiary.model.UserHappyInfo
 
-class MyDiaryListAdapter(override val ctx: Context, override var list: ArrayList<String> = arrayListOf()): BaseRecyclerAdapter<String, MainItemViewHolder>(),
+class MyDiaryListAdapter(override val ctx: Context, override var list: ArrayList<DiaryData> = arrayListOf()): BaseRecyclerAdapter<DiaryData, RecyclerView.ViewHolder>(),
     MyDiaryAdapterConstract.View, MyDiaryAdapterConstract.Model {
 
-    override fun onCreateBasicViewHolder(parent: ViewGroup, viewType: Int): MainItemViewHolder
-        = MainItemViewHolder(parent, MainItemUI())
+    private var enableHeader = false
+    private var userHappyInfo: UserHappyInfo? = null
 
-    override fun onBindBasicItemView(holderItem: MainItemViewHolder?, position: Int) {
-        holderItem?.onBind(position)
+    override fun useHeader(): Boolean = enableHeader
+    override fun onCreateHeaderViewHolder(parent: ViewGroup, viewType: Int): MainItemViewHolder {
+        return MainItemViewHolder(parent, MainItemUI())
+    }
+    override fun onBindHeaderItemView(holder: RecyclerView.ViewHolder, position: Int) {
+        (holder as MainItemViewHolder).onBind(userHappyInfo, position)
     }
 
-    override fun initData(list: ArrayList<String>) {
+    override fun onCreateBasicViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder
+        = DiaryItemViewHolder(parent, DiaryItemUI())
+    override fun onBindBasicItemView(holderItem: RecyclerView.ViewHolder?, position: Int)
+        = (holderItem as DiaryItemViewHolder).onBind(list, position)
+
+    override fun initData(list: ArrayList<DiaryData>) {
         this.list.clear()
         this.list.addAll(list)
     }
-    override fun addAllData(list: ArrayList<String>) {
+    override fun addAllData(list: ArrayList<DiaryData>) {
         this.list.addAll(list)
     }
-
     override fun clear() = list.clear()
     override fun notifyAdapter() = notifyDataSetChanged()
 
+    override fun setHeaderData(userHappyInfo: UserHappyInfo) {
+        this.userHappyInfo = userHappyInfo
+        this.enableHeader = true
+    }
 }

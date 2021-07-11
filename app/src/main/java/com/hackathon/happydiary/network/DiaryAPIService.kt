@@ -3,6 +3,7 @@ package com.hackathon.happydiary.network
 import com.hackathon.happydiary.base.ApiUrl
 import com.hackathon.happydiary.model.DiaryData
 import com.hackathon.happydiary.model.Response
+import com.hackathon.happydiary.model.UserDiaryData
 import io.reactivex.Observable
 import okhttp3.MultipartBody
 import retrofit2.http.GET
@@ -12,8 +13,8 @@ import retrofit2.http.Part
 
 interface DiaryAPIService {
 
-    @GET
-    fun requestMyDiary(): Observable<Response<ArrayList<DiaryData>>>
+    @GET(ApiUrl.USER_DIARY)
+    fun requestMyDiary(): Observable<Response<UserDiaryData>>
 
     /**
      * 200 : 토큰 정상

@@ -30,5 +30,19 @@ class MyDiaryFragment: BaseFragment<MyDiaryConstract.View, MyDiaryPresenter>(), 
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        with(layout as MyDiaryUI) {
+
+            with(rv) {
+                adapter = MyDiaryListAdapter(context)
+                    .also { mAdapter = it }
+            }
+
+            presenter?.run {
+                adapterView = mAdapter
+                adapterModel = mAdapter
+
+                requestMyDiary()
+            }
+        }
     }
 }

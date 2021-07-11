@@ -41,7 +41,7 @@ object ApiUrl {
     const val USERS_NICKNAME = "$API_VERSION/$USERS/$NICKNAME"
 
     // "$DIARY_COMMENT_DIARY/{diaryId}/$COMMENT"
-    const val DIARY_COMMENT_DIARY = "$API_VERSION/$DIARY"
+    const val USER_DIARY = "$API_VERSION/$DIARY"
 
     const val TEST = "$API_VERSION/test"
 }
