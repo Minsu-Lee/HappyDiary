@@ -3,6 +3,7 @@ package com.hackathon.happydiary.di
 import com.google.gson.GsonBuilder
 import com.hackathon.happydiary.BuildConfig
 import com.hackathon.happydiary.base.ApiUrl
+import com.hackathon.happydiary.base.PreferencesManager
 import com.hackathon.happydiary.extensions.applySSL
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import okhttp3.Cache
@@ -54,8 +55,9 @@ val networkModule = module {
 
     single {
         Interceptor { chain ->
+            val pref: PreferencesManager = get()
             chain.proceed(chain.request().newBuilder().apply {
-                header("Authorization", "KakaoAK 2dd8b775a924f0deb5bb1e26b8b0b40b")
+                header("accessToken", pref.getAuthorization())
             }.build())
         }
     }

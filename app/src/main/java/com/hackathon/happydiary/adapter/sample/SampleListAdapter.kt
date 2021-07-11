@@ -1,10 +1,10 @@
-package com.hackathon.happydiary.view.component.adapter
+package com.hackathon.happydiary.adapter.sample
 
 import android.content.Context
 import android.view.ViewGroup
+import com.hackathon.happydiary.adapter.sample.holder.SampleViewHolder
+import com.hackathon.happydiary.adapter.sample.ui.SampleUI
 import com.hackathon.happydiary.base.BaseRecyclerAdapter
-import com.hackathon.happydiary.view.component.adapter.holder.SampleViewHolder
-import com.hackathon.happydiary.view.component.adapter.ui.SampleUI
 
 class SampleListAdapter(override val ctx: Context, override var list: ArrayList<String> = arrayListOf()): BaseRecyclerAdapter<String, SampleViewHolder>(),
     SampleAdapterConstract.View, SampleAdapterConstract.Model {

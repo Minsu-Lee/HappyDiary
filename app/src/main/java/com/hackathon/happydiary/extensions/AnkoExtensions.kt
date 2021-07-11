@@ -3,7 +3,9 @@ package com.hackathon.happydiary.extensions
 import android.view.View
 import android.view.ViewManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import androidx.viewpager2.widget.ViewPager2
 import com.hackathon.happydiary.view.component.SquareImageView
+import org.jetbrains.anko.AnkoViewDslMarker
 import org.jetbrains.anko.custom.ankoView
 
 fun View.string(res: Int): String = context.resources.getString(res)
@@ -25,4 +27,11 @@ inline fun ViewManager.squareImageView(imageResource: Int, init: SquareImageView
 inline fun ViewManager.swipeRefreshLayout() = swipeRefreshLayout {}
 inline fun ViewManager.swipeRefreshLayout(init: SwipeRefreshLayout.() -> Unit): SwipeRefreshLayout {
     return ankoView({ SwipeRefreshLayout(it) }, theme= 0, init= init)
+}
+
+
+
+inline fun ViewManager.viewPager2(): ViewPager2 = viewPager2() {}
+inline fun ViewManager.viewPager2(init: (@AnkoViewDslMarker ViewPager2).() -> Unit): ViewPager2 {
+    return ankoView({ ViewPager2(it) }, theme = 0) { init() }
 }
