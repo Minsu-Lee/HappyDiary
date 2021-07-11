@@ -151,6 +151,7 @@ class DiaryUI: AnkoComponent<Activity> {
                     setTextCursorDrawable(R.drawable.cursor_color)
                 }.lparams(width = dip(280), height = dip(160))
 
+                //태그
                 var edit = autoCompleteTextView {
                     gravity = Gravity.LEFT
                     hint = "#태그입력"
