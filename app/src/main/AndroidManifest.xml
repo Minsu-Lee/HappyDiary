@@ -15,7 +15,7 @@
         android:theme="@style/Theme.HappyDiary">
 
         <activity android:name=".view.intro.IntroActivity"
-            android:theme="@style/Fullscreen">
+            android:theme="@style/FullscreenTheme">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

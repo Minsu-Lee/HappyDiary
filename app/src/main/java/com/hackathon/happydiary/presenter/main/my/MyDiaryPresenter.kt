@@ -22,24 +22,22 @@ class MyDiaryPresenter(val diaryApi: DiaryAPIService): AbstractPresenter<MyDiary
 
                 when (response.status) {
                     StatusConst.SUCCESS, StatusConst.SUCCESS201 -> {
+
                         response.data?.let {
-                            adapterModel?.setHeaderData(it.user)
+                            view?.bindHeader(it.user)
                             adapterModel?.initData(it.diary)
                             adapterView?.notifyAdapter()
                         }
                     }
                     else -> {
                         log("validToken", response.message)
-                        adapterModel?.setHeaderData(UserHappyInfo(1, 10, 0))
-                        adapterView?.notifyAdapter()
+                        view?.bindHeader(UserHappyInfo(1, 10, 0))
                     }
                 }
             }, {
                 handleError(it)
                 log("validToken", it.message ?: "")
-                adapterModel?.setHeaderData(UserHappyInfo(1, 10, 0))
-                adapterView?.notifyAdapter()
+                view?.bindHeader(UserHappyInfo(1, 10, 0))
             })
     }
-
 }

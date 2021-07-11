@@ -5,11 +5,9 @@ import android.text.TextUtils
 import android.util.TypedValue
 import android.view.Gravity
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
-import androidx.fragment.app.Fragment
 import com.hackathon.happydiary.R
 import com.hackathon.happydiary.extensions.squareImageView
 import com.hackathon.happydiary.view.component.SquareImageView
@@ -72,7 +70,7 @@ class DiaryItemUI: AnkoComponent<ViewGroup> {
                 }
 
                 contentIv = squareImageView {
-                    backgroundColor = Color.LTGRAY
+                    backgroundColor = Color.TRANSPARENT
                 }.lparams(width= matchParent) {
                     bottomMargin = dip(5)
                 }
@@ -157,7 +155,7 @@ class DiaryItemUI: AnkoComponent<ViewGroup> {
                         gravity = Gravity.CENTER_VERTICAL
 
                         menuIv = squareImageView {
-                            backgroundResource = R.drawable.ic_lock_img
+                            backgroundResource = R.drawable.ic_menu_dot
                         }.lparams(width= dip(20))
 
                     }.lparams(width= wrapContent, height= dip(25))
@@ -170,6 +168,8 @@ class DiaryItemUI: AnkoComponent<ViewGroup> {
                  * Weather
                  */
                 linearLayout {
+                    orientation = LinearLayout.HORIZONTAL
+                    gravity = Gravity.CENTER
 
                     weatherIv = squareImageView {
                     }.lparams(width= dip(20)) {
@@ -178,7 +178,7 @@ class DiaryItemUI: AnkoComponent<ViewGroup> {
 
                     weatherTv = textView("행복") {
 
-                        typeface = ResourcesCompat.getFont(context, R.font.notosans_cjk_bold)
+                        //typeface = ResourcesCompat.getFont(context, R.font.notosans_cjk_bold)
                         setTextSize(TypedValue.COMPLEX_UNIT_PX, resources.getDimension(R.dimen.diary_weather_text_size))
                         textColor = Color.parseColor("#1A1A1A")
                         setLineSpacing(resources.getDimension(R.dimen.diary_weather_text_line_height), 1.0f)
@@ -232,9 +232,7 @@ class DiaryItemUI: AnkoComponent<ViewGroup> {
                     textColor = Color.parseColor("#999999")
                     setLineSpacing(resources.getDimension(R.dimen.diary_date_text_line_height), 1.0f)
 
-                }.lparams(width= wrapContent, height= wrapContent) {
-                    bottomMargin = dip(10)
-                }
+                }.lparams(width= wrapContent, height= wrapContent)
 
             }
         }

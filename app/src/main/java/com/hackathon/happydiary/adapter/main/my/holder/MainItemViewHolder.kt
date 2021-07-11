@@ -12,24 +12,5 @@ import org.jetbrains.anko.wrapContent
 
 class MainItemViewHolder(parent: ViewGroup, val ui: MainItemUI): BaseViewHolder(parent, ui) {
 
-    fun onBind(userHappyInfo: UserHappyInfo? = null, position: Int) = with(ui) {
-        userHappyInfo?.let { info ->
-
-            val deviceSize = DeviceUtils.getDeviceSize(ctx)
-            val leftMargin = (deviceSize.x * ctx.dip(20)) - ctx.dip(360)
-            val leftInnerMargin = (deviceSize.x * ctx.dip(22)) - ctx.dip(360)
-
-            myHappyCntTv.text = "Lv.${info.level}"
-
-            with(userWriteCntTv) {
-                text = "${info.userWriteCount}건"
-                layoutParams = RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT).apply {
-                    this.leftMargin = (leftMargin + leftInnerMargin)
-                }
-            }
-
-            levelUpCntTv.text = "${info.levelupCount}건"
-
-        }
-    }
+    fun onBind(position: Int) {}
 }

@@ -3,6 +3,10 @@ package com.hackathon.happydiary.view.intro
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.hackathon.happydiary.R
 import com.hackathon.happydiary.StatusConst
 import com.hackathon.happydiary.base.BaseActivity
 import com.hackathon.happydiary.presenter.intro.IntroConstract
@@ -11,6 +15,7 @@ import com.hackathon.happydiary.view.intro.ui.IntroUI
 import com.hackathon.happydiary.view.main.MainActivity
 import com.hackathon.happydiary.view.splash.SplashActivity
 import org.jetbrains.anko.AnkoComponent
+import org.jetbrains.anko.dip
 import org.koin.android.ext.android.get
 
 class IntroActivity: BaseActivity<IntroConstract.View, IntroPresenter>(), IntroConstract.View {
@@ -20,7 +25,17 @@ class IntroActivity: BaseActivity<IntroConstract.View, IntroPresenter>(), IntroC
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //initAppIcon()
         validToken()
+    }
+
+    override fun initAppIcon() {
+        with(layout as IntroUI) {
+            Glide.with(this@IntroActivity)
+                    .load(R.drawable.ic_intro_img)
+                    .transform(CenterCrop(), RoundedCorners(dip(20)))
+                    .into(mIntroIconIv)
+        }
     }
 
     private fun validToken() {

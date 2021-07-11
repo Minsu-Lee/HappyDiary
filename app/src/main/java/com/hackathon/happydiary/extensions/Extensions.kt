@@ -1,9 +1,11 @@
 package com.hackathon.happydiary.extensions
 
+import android.content.Context
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.widget.EditText
+import android.widget.Toast
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
@@ -54,6 +56,8 @@ fun View.safeViewLock(lock: Boolean) {
     isEnabled = !lock
     isClickable = !lock
 }
+
+fun toast(ctx: Context, msg: String) = Toast.makeText(ctx, msg, Toast.LENGTH_LONG).show()
 
 /**
  * 참고 : https://meetup.toast.com/posts/130

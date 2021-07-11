@@ -2,6 +2,12 @@
 <resources>
     <dimen name="sample_text_size">13dp</dimen>
 
+    <dimen name="intro_title_text_size">34dp</dimen>
+    <dimen name="intro_title_text_line_height">8.5dp</dimen>
+
+    <dimen name="intro_desc_text_size">16dp</dimen>
+    <dimen name="intro_desc_text_line_height">6dp</dimen>
+
     <dimen name="splash_content_text_size">26dp</dimen>
     <dimen name="splash_content_text_line_height">8dp</dimen>
 

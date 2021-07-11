@@ -10,6 +10,6 @@ interface BaseView {
 
     fun onInvisibleProgress() { }
 
-    fun movePage(callback: (Long)->Unit, delay: Long = 2000L, timeUnit: TimeUnit = TimeUnit.MILLISECONDS)
+    fun movePage(callback: (Long)->Unit, delay: Long = 3000L, timeUnit: TimeUnit = TimeUnit.MILLISECONDS)
 
 }

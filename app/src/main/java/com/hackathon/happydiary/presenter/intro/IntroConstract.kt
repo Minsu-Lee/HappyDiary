@@ -8,6 +8,7 @@ import com.hackathon.happydiary.model.Response
 interface IntroConstract {
 
     interface View: BaseView {
+        fun initAppIcon()
         fun moveSplashPage(time: Long)
         fun moveMainPage(time: Long)
     }
