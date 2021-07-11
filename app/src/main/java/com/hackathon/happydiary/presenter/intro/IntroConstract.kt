@@ -2,6 +2,7 @@ package com.hackathon.happydiary.presenter.intro
 
 import com.hackathon.happydiary.base.BasePresenter
 import com.hackathon.happydiary.base.BaseView
+import com.hackathon.happydiary.model.LogInData
 import com.hackathon.happydiary.model.Response
 
 interface IntroConstract {
@@ -12,7 +13,7 @@ interface IntroConstract {
     }
 
     interface Presenter: BasePresenter<View> {
-        fun validToken(token: String, callback: (Int, Response<String>) -> Unit)
+        fun validToken(callback: (Int, Response<LogInData>) -> Unit)
     }
 
 }

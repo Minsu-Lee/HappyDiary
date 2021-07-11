@@ -4,6 +4,7 @@ object ApiUrl {
 
     //http://3.36.37.161:8080/api/v2/test
     const val MAIN_DOMAIN = "http://3.36.37.161:8080"
+    //const val MAIN_DOMAIN = "http://1.242.189.145:8080"
 
     const val API_VERSION = "/api/v2"
 
@@ -42,4 +43,5 @@ object ApiUrl {
     // "$DIARY_COMMENT_DIARY/{diaryId}/$COMMENT"
     const val DIARY_COMMENT_DIARY = "$API_VERSION/$DIARY"
 
+    const val TEST = "$API_VERSION/test"
 }

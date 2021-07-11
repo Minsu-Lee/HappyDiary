@@ -5,13 +5,26 @@ import android.graphics.Color
 import android.util.TypedValue
 import android.view.Gravity
 import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
+import androidx.viewpager2.widget.MarginPageTransformer
+import androidx.viewpager2.widget.ViewPager2
 import com.hackathon.happydiary.R
 import com.hackathon.happydiary.extensions.squareImageView
+import com.hackathon.happydiary.extensions.viewPager2
+import com.hackathon.happydiary.view.component.SquareImageView
 import org.jetbrains.anko.*
 import org.jetbrains.anko.constraint.layout.constraintLayout
 
 class SplashUI: AnkoComponent<Activity> {
+
+    lateinit var vp: ViewPager2
+
+    lateinit var ind01: SquareImageView
+    lateinit var ind02: SquareImageView
+    lateinit var ind03: SquareImageView
+
+    lateinit var contentTv: TextView
 
     lateinit var mKakaoLoginBtn: LinearLayout
 
@@ -20,34 +33,38 @@ class SplashUI: AnkoComponent<Activity> {
 
             id = R.id.splash_parent
             lparams(width= matchParent, height= matchParent)
-            backgroundResource = R.drawable.bg_splash_unicorn
-            topPadding = dip(60)
-            bottomPadding = dip(40)
-            horizontalPadding = dip(40)
+            // backgroundResource = R.drawable.bg_splash_unicorn
+
+            vp = viewPager2 {
+                orientation = ViewPager2.ORIENTATION_HORIZONTAL
+                setPageTransformer(MarginPageTransformer(0))
+            }.lparams(width= matchParent, height= matchParent)
 
             linearLayout {
                 id = R.id.splash_indicator
                 orientation = LinearLayout.HORIZONTAL
 
-                squareImageView(R.drawable.ic_splash_indicator) {
+                ind01 = squareImageView(R.drawable.ic_splash_indicator) {
                 }.lparams(width= dip(10)) {
                     rightMargin = dip(10)
                 }
 
-                squareImageView(R.drawable.ic_splash_indicator) {
+                ind02 = squareImageView(R.drawable.ic_splash_indicator) {
                 }.lparams(width= dip(10)) {
                     rightMargin = dip(10)
                 }
 
-                squareImageView(R.drawable.ic_splash_indicator) {
+                ind03 = squareImageView(R.drawable.ic_splash_indicator) {
                 }.lparams(width= dip(10))
 
             }.lparams(width= wrapContent, height= dip(10)) {
+                topMargin = dip(60)
+                horizontalMargin = dip(40)
                 topToTop = R.id.splash_parent
                 leftToLeft = R.id.splash_parent
             }
 
-            textView("당신만이\n누리고 있는 행복을\n붙잡아 기록해보세요.") {
+            contentTv = textView("당신만이\n누리고 있는 행복을\n붙잡아 기록해보세요.") {
 
                 typeface = ResourcesCompat.getFont(context, R.font.nanum_myeongjo_extra_bold)
                 setTextSize(TypedValue.COMPLEX_UNIT_PX, resources.getDimension(R.dimen.splash_content_text_size))
@@ -83,6 +100,8 @@ class SplashUI: AnkoComponent<Activity> {
                 }.lparams(width= wrapContent, height= wrapContent)
 
            }.lparams(width= matchParent, height= wrapContent) {
+                horizontalMargin = dip(40)
+                bottomMargin = dip(40)
                 bottomToBottom = R.id.splash_parent
             }
 

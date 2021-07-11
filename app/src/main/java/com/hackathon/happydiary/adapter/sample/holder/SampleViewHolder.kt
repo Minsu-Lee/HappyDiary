@@ -1,8 +1,8 @@
-package com.hackathon.happydiary.view.component.adapter.holder
+package com.hackathon.happydiary.adapter.sample.holder
 
 import android.view.ViewGroup
-import com.hackathon.happydiary.view.component.adapter.ui.SampleUI
 import com.hackathon.happydiary.R
+import com.hackathon.happydiary.adapter.sample.ui.SampleUI
 import com.hackathon.happydiary.base.BaseViewHolder
 
 class SampleViewHolder(parent: ViewGroup, val ui: SampleUI): BaseViewHolder(parent, ui) {

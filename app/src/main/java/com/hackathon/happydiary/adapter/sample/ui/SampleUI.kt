@@ -1,4 +1,4 @@
-package com.hackathon.happydiary.view.component.adapter.ui
+package com.hackathon.happydiary.adapter.sample.ui
 
 import android.graphics.Color
 import android.util.TypedValue

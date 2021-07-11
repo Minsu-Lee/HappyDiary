@@ -4,9 +4,12 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.core.content.ContextCompat
+import androidx.viewpager2.widget.ViewPager2
 import com.hackathon.happydiary.BuildConfig
 import com.hackathon.happydiary.R
 import com.hackathon.happydiary.StatusConst
+import com.hackathon.happydiary.adapter.splash.SplashAdapter
 import com.hackathon.happydiary.base.BaseActivity
 import com.hackathon.happydiary.presenter.splash.SplashConstract
 import com.hackathon.happydiary.presenter.splash.SplashPresenter
@@ -15,9 +18,12 @@ import com.hackathon.happydiary.view.main.MainActivity
 import com.hackathon.happydiary.view.splash.ui.SplashUI
 import com.kakao.sdk.common.util.Utility
 import org.jetbrains.anko.AnkoComponent
+import org.jetbrains.anko.backgroundResource
 import org.koin.android.ext.android.get
 
 class SplashActivity: BaseActivity<SplashConstract.View, SplashPresenter>(), SplashConstract.View, View.OnClickListener {
+
+    lateinit var mAdapter: SplashAdapter
 
     override var layout: AnkoComponent<Activity> = SplashUI()
     override fun onCreatePresenter(): SplashPresenter = get()
@@ -25,6 +31,45 @@ class SplashActivity: BaseActivity<SplashConstract.View, SplashPresenter>(), Spl
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         with(layout as SplashUI) {
+
+            with(vp) {
+                adapter = SplashAdapter(this@SplashActivity)
+                    .also { mAdapter = it }
+                registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
+                    override fun onPageSelected(position: Int) {
+                        super.onPageSelected(position)
+                        when(position) {
+                            0 -> {
+                                ind01.backgroundResource = R.drawable.ic_splash_indicator
+                                ind02.backgroundResource = R.drawable.ic_splash_indicator_off
+                                ind03.backgroundResource = R.drawable.ic_splash_indicator_off
+                                contentTv.text = resources.getString(R.string.splash_content01_str)
+                            }
+                            1 -> {
+                                ind01.backgroundResource = R.drawable.ic_splash_indicator_off
+                                ind02.backgroundResource = R.drawable.ic_splash_indicator
+                                ind03.backgroundResource = R.drawable.ic_splash_indicator_off
+                                contentTv.text = resources.getString(R.string.splash_content02_str)
+                            }
+                            else -> {
+                                ind01.backgroundResource = R.drawable.ic_splash_indicator_off
+                                ind02.backgroundResource = R.drawable.ic_splash_indicator_off
+                                ind03.backgroundResource = R.drawable.ic_splash_indicator
+                                contentTv.text = resources.getString(R.string.splash_content03_str)
+                            }
+                        }
+                    }
+                })
+            }
+
+            presenter?.run {
+                adapterView = mAdapter
+                adapterModel = mAdapter
+
+                // splash 이미지 가져오기
+                getSplashImgs()
+            }
+
             mKakaoLoginBtn.setOnClickListener(this@SplashActivity)
         }
         getKeyHash()
@@ -58,6 +103,7 @@ class SplashActivity: BaseActivity<SplashConstract.View, SplashPresenter>(), Spl
                          * 아직 가입 유무 API를 개발 진행중이라 향후 로직 개발
                          */
                         val identifier = id
+                        pref.setOAuthId(identifier)
                         DLog.e("kakaoLogin", "$identifier")
 
                         requestLogin(identifier) { status, response ->
@@ -75,6 +121,10 @@ class SplashActivity: BaseActivity<SplashConstract.View, SplashPresenter>(), Spl
                                 }
                             }
                         }
+//                        movePage({
+//                            Intent(this@SplashActivity, MainActivity::class.java)
+//                                .let(this@SplashActivity::startActivity)
+//                        }, 2000L)
                     }
                 }
             }

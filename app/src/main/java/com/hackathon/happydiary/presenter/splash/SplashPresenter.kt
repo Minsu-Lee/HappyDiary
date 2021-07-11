@@ -1,6 +1,9 @@
 package com.hackathon.happydiary.presenter.splash
 
+import com.hackathon.happydiary.R
 import com.hackathon.happydiary.StatusConst
+import com.hackathon.happydiary.adapter.sample.SampleAdapterConstract
+import com.hackathon.happydiary.adapter.splash.SplashAdapterConstract
 import com.hackathon.happydiary.base.AbstractPresenter
 import com.hackathon.happydiary.model.LogInData
 import com.hackathon.happydiary.model.Response
@@ -13,6 +16,20 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
 class SplashPresenter(val userApi: UserAPIService): AbstractPresenter<SplashConstract.View>(), SplashConstract.Presenter {
+
+    override var adapterView: SplashAdapterConstract.View? = null
+    override var adapterModel: SplashAdapterConstract.Model? = null
+
+    override fun getSplashImgs(callback: ((ArrayList<Int>) -> Unit)?) {
+        arrayListOf(
+            R.drawable.bg_splash_01,
+            R.drawable.bg_splash_02,
+            R.drawable.bg_splash_03).let {
+                callback?.invoke(it)
+                adapterModel?.initData(it)
+                adapterView?.notifyAdapter()
+            }
+    }
 
     override fun kakaoLogin(callback: (token: OAuthToken?, error: Throwable?) -> Unit) {
         procKakaoLogin { kakaoToken, error ->
@@ -59,7 +76,7 @@ class SplashPresenter(val userApi: UserAPIService): AbstractPresenter<SplashCons
             .subscribeOn(Schedulers.io())
             .subscribe({
                 when (it.status) {
-                    StatusConst.SUCCESS or StatusConst.SUCCESS201 -> callback(it.status, it)
+                    StatusConst.SUCCESS, StatusConst.SUCCESS201 -> callback(it.status, it)
                     else -> log("validToken", it.message)
                 }
             }, this::handleError)

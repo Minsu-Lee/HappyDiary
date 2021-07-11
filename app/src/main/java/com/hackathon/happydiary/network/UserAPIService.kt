@@ -3,6 +3,7 @@ package com.hackathon.happydiary.network
 import com.hackathon.happydiary.base.ApiUrl
 import com.hackathon.happydiary.model.LogInData
 import com.hackathon.happydiary.model.Response
+import com.hackathon.happydiary.model.TestData
 import io.reactivex.Observable
 import okhttp3.MultipartBody
 import retrofit2.http.*
@@ -14,11 +15,16 @@ interface UserAPIService {
      * 201 : 토큰 갱신
      * 600 : 신규사용자
      */
-    @POST(ApiUrl.VALID_TOKEN)
-    fun validToken(@Body token: String): Observable<Response<String>>
+    @GET(ApiUrl.VALID_TOKEN)
+    fun validToken(): Observable<Response<LogInData>>
 
+    @FormUrlEncoded
     @POST(ApiUrl.SOCIAL_LOGIN)
-    fun socialLogin(@Body socialId: Long): Observable<Response<LogInData>>
+    fun socialLogin(@Field("socialId") socialId: Long): Observable<Response<LogInData>>
+
+    @FormUrlEncoded
+    @POST(ApiUrl.TEST)
+    fun test(@Field("test1") test1: String, @Field("test2") test2: String): Observable<Response<TestData>>
 
     /**
      *

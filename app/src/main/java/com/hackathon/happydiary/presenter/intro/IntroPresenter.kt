@@ -2,6 +2,7 @@ package com.hackathon.happydiary.presenter.intro
 
 import com.hackathon.happydiary.StatusConst
 import com.hackathon.happydiary.base.AbstractPresenter
+import com.hackathon.happydiary.model.LogInData
 import com.hackathon.happydiary.model.Response
 import com.hackathon.happydiary.network.UserAPIService
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -9,8 +10,11 @@ import io.reactivex.schedulers.Schedulers
 
 class IntroPresenter(val userApi: UserAPIService): AbstractPresenter<IntroConstract.View>(), IntroConstract.Presenter {
 
-    override fun validToken(token: String, callback: (Int, Response<String>) -> Unit) {
-        userApi.validToken(token)
+    /**
+     * header에 accessToken을 사용
+     */
+    override fun validToken(callback: (Int, Response<LogInData>) -> Unit) {
+        userApi.validToken()
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())
             .subscribe({

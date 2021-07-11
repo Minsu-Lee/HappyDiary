@@ -4,4 +4,9 @@
     <item name="splash_parent" type="id" />
     <item name="splash_indicator" type="id" />
     <item name="splash_kakao_btn" type="id" />
+    <item name="main_viewpager" type="id" />
+
+    <item name="my_diary_list" type="id" />
+    <item name="diary_write" type="id" />
+    <item name="other_diary_list" type="id" />
 </resources>

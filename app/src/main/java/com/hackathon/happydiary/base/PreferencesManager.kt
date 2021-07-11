@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import com.hackathon.happydiary.AppConst.AUTHORIZATION_KEY
 import com.hackathon.happydiary.AppConst.LOGIN_ID
+import com.hackathon.happydiary.AppConst.OAUTHID_KEY
 import com.hackathon.happydiary.AppConst.USER_ID_KEY
 import com.hackathon.happydiary.AppConst.USER_NAME_KEY
 
@@ -16,6 +17,12 @@ class PreferencesManager(ctx: Context, name: String = "pref") {
     fun getAuthorization(): String = pref.getString(AUTHORIZATION_KEY, "") ?: ""
     fun setAuthorization(token: String) {
         saver.putString(AUTHORIZATION_KEY, token)
+        saver.commit()
+    }
+
+    fun getOAuthId(): Long = pref.getLong(OAUTHID_KEY, 0L) ?: 0L
+    fun setOAuthId(oauthId: Long) {
+        saver.putLong(OAUTHID_KEY, oauthId)
         saver.commit()
     }
 
